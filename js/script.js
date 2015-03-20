@@ -16,6 +16,39 @@
         }
     });
 
+  $('#brief').click(function() {
+        $(this).addClass("slideUp");
+    });
+
+    resp_tabs.responsiveTabs();
+
+});
+$(window).load(function(){
+
+$(window).on("resize", function () {
+
+    $.each(($(".bg")), function() {
+
+    paneHeight = $(this).parent().height();
+    paneWidth = $(this).parent().width();
+    paneRatio = paneHeight/paneWidth;
+    imgHeight = $(this).height();
+    imgWidth = $(this).width();
+    imgRatio = imgHeight/imgWidth;
+
+    if (paneRatio>=imgRatio) {
+    $(this).css({top:'0px', height:paneHeight+'px', width:'auto'});
+    leftPos=(($(this).parent().width()-$(this).width())/2)
+    $(this).css({left:leftPos+'px'});
+    }
+    else {
+    $(this).css({left:'0px', width:paneWidth+'px', height:'auto'});
+    topPos=(($(this).parent().height()-$(this).height())/2)
+    $(this).css({top:topPos+'px'});
+    }
+    });
+
+    }).resize();
 });
 
 var top_menu_height = 0;
